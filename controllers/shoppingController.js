@@ -1,21 +1,21 @@
 const fs = require("fs");
-const Product = require("../models/Product");
+const Shopping = require("../models/Shopping");
 const catchAsync = require("../utils/catchAsync");
 
 exports.getAllProducts = catchAsync(async (req, res) => {
-  const products = await Product.find();
+  const carProducts = await Shopping.find();
 
   res.status(200).json({
     status: "success",
     timeOfRequest: req.requestTime,
-    results: products.length,
+    results: carProducts.length,
     data: {
-      products,
+      carProducts,
     },
   });
 });
 
-exports.addProduct = catchAsync(async (req, res) => {
+exports.addProductCar = catchAsync(async (req, res) => {
   const newProduct = await Product.create(req.body);
   res.status(200).json({
     status: "success",
