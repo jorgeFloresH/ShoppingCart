@@ -11,7 +11,13 @@ const shoppingSchema = new mongoose.Schema({
     
   },
   products: {
-    type: [],
+    type: [
+      {
+        productId:String,
+        quantity:Number,
+        price:Number,
+      }
+    ],
     required: true,
     
   },

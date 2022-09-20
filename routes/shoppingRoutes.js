@@ -4,15 +4,18 @@ const authController = require("../controllers/authController");
 const productRouter = express.Router();
 //routes
 shoppingRouter
-  .route("/")
+  .route("/product")
   .all(authController.protect)
   .get(shoppingController.getAllProducts)
   .post(shoppingController.addProductCar);
 shoppingRouter
-  .route("/:id")
+  .route("/product/:id")
   .all(authController.protect)
-  .get(shoppingController.getProductById)
-  .put(shoppingController.updateProductById)
   .delete(shoppingController.deleteProductById);
+shoppingRouter
+  .route("/pay")
+  .all(authController.protect)
+  .post(shoppingController.updateCart);
+
 
 module.exports = productRouter;
